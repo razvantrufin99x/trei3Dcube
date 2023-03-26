@@ -17,7 +17,15 @@ namespace trei3Dcube
             InitializeComponent();
         }
 
-       //CREATE A 3D CUBE ISO WHO CAN BE TOTATED 
+        //CREATE A 3D CUBE ISO WHO CAN BE TOTATED 
+
+        bool ismousdown = false;
+        int posxm = 0;
+        int posym = 0;
+        int preposxm = 0;
+        int preposym = 0;
+
+        public float thisworldAngle = 10.0f;
 
         public class cub {
 
@@ -191,6 +199,17 @@ namespace trei3Dcube
            
            
         }
+
+        public void animate()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                cubul1.worldAngle += 5;
+                cubul2.worldAngle += 20;
+                drawAllCubes();
+            }
+        }
+
         public void drawAllCubes()
         {
             cubul1.clear();
@@ -219,6 +238,41 @@ namespace trei3Dcube
         {
             cubul2.worldAngle -= 20;
             drawAllCubes();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            animate();
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ismousdown = true;
+            preposxm = e.X;
+            preposym = e.Y;
+
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (ismousdown == true)
+            { 
+                posym = e.Y;
+                posxm = e.X;
+
+                if (preposxm > posxm) { thisworldAngle += 10; }
+                else if (preposxm < posxm) { thisworldAngle -= 10; }
+
+                cubul1.worldAngle += thisworldAngle;
+                cubul2.worldAngle += thisworldAngle;
+                drawAllCubes();
+
+            }
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            ismousdown = false;
         }
     }
 }
