@@ -53,8 +53,8 @@ namespace trei3Dcube
             //is a pointer
             public Form forma;
 
-            public  List<float> pointsofsquare1 = new List<float>();
-            public  List<float> pointsofsquare2 = new List<float>();
+            public  List<float> pointsofsquare1 = new List<float>(100);
+            public  List<float> pointsofsquare2 = new List<float>(100);
 
             public void creategrafics(Form f) {
                 this.forma = f;
@@ -260,9 +260,9 @@ namespace trei3Dcube
                 posym = e.Y;
                 posxm = e.X;
 
-                if (preposxm > posxm) { thisworldAngle += 10; }
-                else if (preposxm < posxm) { thisworldAngle -= 10; }
-
+                if (preposxm > posxm && thisworldAngle<360) { thisworldAngle = +cubul1.distantaintredouapuncte2dxy(posxm,posym,preposxm,preposym)/100; }
+                else if (preposxm < posxm && thisworldAngle > -360) { thisworldAngle = -cubul1.distantaintredouapuncte2dxy(posxm, posym, preposxm, preposym) /100; }
+                Text = thisworldAngle.ToString();
                 cubul1.worldAngle += thisworldAngle;
                 cubul2.worldAngle += thisworldAngle;
                 drawAllCubes();
