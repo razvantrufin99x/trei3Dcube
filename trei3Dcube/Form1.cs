@@ -96,14 +96,14 @@ namespace trei3Dcube
             public void draw()
             {
                
-                this.drawLinesVerticals();
+               
                 try
                 {
                     this.deleteAllPointsFromLists();
                 }
                 catch { }
-                    calculate();
-
+                calculate();    
+                this.drawLinesVerticals();
             }
           
             public void dc1()
