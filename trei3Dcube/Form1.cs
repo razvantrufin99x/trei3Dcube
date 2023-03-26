@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -112,6 +113,93 @@ namespace trei3Dcube
                 this.dc1();
                 this.dc2();
             }
+
+            public void fillFaces()
+            {
+
+                Point p0 = new Point((int)pointsofsquare1[0], (int)pointsofsquare1[1]);
+                Point p1 = new Point((int)pointsofsquare1[2], (int)pointsofsquare1[3]);
+                Point p2 = new Point((int)pointsofsquare1[4], (int)pointsofsquare1[5]);
+                Point p3 = new Point((int)pointsofsquare1[6], (int)pointsofsquare1[7]);
+
+                Point[] puncte = new Point[4];
+                puncte[0] = p0;
+                puncte[1] = p1;
+                puncte[2] = p2;
+                puncte[3] = p3;
+
+                ig.FillPolygon(new SolidBrush(Color.AliceBlue), puncte);
+
+                Point p0b = new Point((int)pointsofsquare2[0], (int)pointsofsquare2[1]);
+                Point p1b = new Point((int)pointsofsquare2[2], (int)pointsofsquare2[3]);
+                Point p2b = new Point((int)pointsofsquare2[4], (int)pointsofsquare2[5]);
+                Point p3b = new Point((int)pointsofsquare2[6], (int)pointsofsquare2[7]);
+
+                Point[] puncteb = new Point[4];
+                puncteb[0] = p0b;
+                puncteb[1] = p1b;
+                puncteb[2] = p2b;
+                puncteb[3] = p3b;
+
+                ig.FillPolygon(new SolidBrush(Color.Sienna), puncteb);
+
+
+
+                Point p0c = new Point((int)pointsofsquare1[0], (int)pointsofsquare1[1]);
+                Point p1c = new Point((int)pointsofsquare2[0], (int)pointsofsquare2[1]);
+                Point p2c = new Point((int)pointsofsquare2[2], (int)pointsofsquare2[3]);
+                Point p3c = new Point((int)pointsofsquare1[2], (int)pointsofsquare1[3]);
+
+                Point[] punctec = new Point[4];
+                punctec[0] = p0c;
+                punctec[1] = p1c;
+                punctec[2] = p2c;
+                punctec[3] = p3c;
+
+                ig.FillPolygon(new SolidBrush(Color.Silver), punctec);
+               
+                Point p0d = new Point((int)pointsofsquare1[2], (int)pointsofsquare1[3]);
+                Point p1d = new Point((int)pointsofsquare2[2], (int)pointsofsquare2[3]);
+                Point p2d = new Point((int)pointsofsquare2[4], (int)pointsofsquare2[5]);
+                Point p3d = new Point((int)pointsofsquare1[4], (int)pointsofsquare1[5]);
+
+                Point[] puncted = new Point[4];
+                puncted[0] = p0d;
+                puncted[1] = p1d;
+                puncted[2] = p2d;
+                puncted[3] = p3d;
+
+                ig.FillPolygon(new SolidBrush(Color.Snow), puncted);
+
+                Point p0e = new Point((int)pointsofsquare1[4], (int)pointsofsquare1[5]);
+                Point p1e = new Point((int)pointsofsquare2[4], (int)pointsofsquare2[5]);
+                Point p2e = new Point((int)pointsofsquare2[6], (int)pointsofsquare2[7]);
+                Point p3e = new Point((int)pointsofsquare1[6], (int)pointsofsquare1[7]);
+
+                Point[] punctee = new Point[4];
+                punctee[0] = p0e;
+                punctee[1] = p1e;
+                punctee[2] = p2e;
+                punctee[3] = p3e;
+
+                ig.FillPolygon(new SolidBrush(Color.Tan), punctee);
+ 
+                Point p0f = new Point((int)pointsofsquare1[6], (int)pointsofsquare1[7]);
+                Point p1f = new Point((int)pointsofsquare2[6], (int)pointsofsquare2[7]);
+                Point p2f = new Point((int)pointsofsquare2[0], (int)pointsofsquare2[1]);
+                Point p3f = new Point((int)pointsofsquare1[0], (int)pointsofsquare1[1]);
+
+                Point[] punctef = new Point[4];
+                punctef[0] = p0f;
+                punctef[1] = p1f;
+                punctef[2] = p2f;
+                punctef[3] = p3f;
+
+                ig.FillPolygon(new SolidBrush(Color.Tomato), punctef);
+              /*  */
+
+            }
+
             public void draw()
             {
                
@@ -123,6 +211,7 @@ namespace trei3Dcube
                 catch { }
                 calculate();    
                 this.drawLinesVerticals();
+                fillFaces();
             }
           
             public void dc1()
