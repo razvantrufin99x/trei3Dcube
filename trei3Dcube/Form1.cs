@@ -45,8 +45,8 @@ namespace trei3Dcube
             //is a pointer
             public Form forma;
 
-            public static List<float> pointsofsquare1 = new List<float>();
-            public static List<float> pointsofsquare2 = new List<float>();
+            public  List<float> pointsofsquare1 = new List<float>();
+            public  List<float> pointsofsquare2 = new List<float>();
 
             public void creategrafics(Form f) {
                 this.forma = f;
@@ -70,8 +70,19 @@ namespace trei3Dcube
                 xdim = pxdim;
                 ydim = pydim;
                 zdim = pzdim;
-                }
+                 
+            }
+            public cub(float px, float py, float pz, float pxdim, float pydim, float pzdim, float prez)
+            {
 
+                x = px;
+                y = py;
+                z = pz;
+                xdim = pxdim;
+                ydim = pydim;
+                zdim = pzdim;
+                rez = prez;
+            }
             public void drawLinesVerticals()
             {
                 for (int i = 0; i < rez * 2; i += 2)
@@ -161,34 +172,53 @@ namespace trei3Dcube
 
         private void button1_Click(object sender, EventArgs e)
         {
-            cubul.creategrafics(this);
-            cubul.draw();
+            cubul1.creategrafics(this);
+            cubul1.draw();
+
+            cubul2.creategrafics(this);
+            cubul2.draw();
 
         }
 
 
-        public cub cubul = new cub(250,250,250,50,50,50);
+        public cub cubul1 = new cub(250,250,250,50,50,50);
+        public cub cubul2 = new cub(350, 350, 250, 50, 50, 50);
 
-        
+
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Width = 1024;
            
            
         }
-
+        public void drawAllCubes()
+        {
+            cubul1.clear();
+            cubul1.draw();
+            cubul2.draw();
+        }
         private void button2_Click(object sender, EventArgs e)
         {
-            cubul.worldAngle += 5 ;
-            cubul.clear();
-            cubul.draw();
+            cubul1.worldAngle += 5 ;
+            drawAllCubes();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            cubul.worldAngle -= 5;
-            cubul.clear();
-            cubul.draw();
+            cubul1.worldAngle -= 5;
+            drawAllCubes();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            cubul2.worldAngle += 20;
+            drawAllCubes();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            cubul2.worldAngle -= 20;
+            drawAllCubes();
         }
     }
 }
